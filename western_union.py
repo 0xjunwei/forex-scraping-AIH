@@ -31,10 +31,10 @@ def get_western_union_rate(country_code):
 
 @app.route("/get_rate", methods=["GET"])
 def get_rate():
-    # Get country_code from query parameters, default to 'IN' if not provided
-    country_code = request.args.get("country_code", default="IN", type=str).upper()
+    # Get country_code from query parameters
+    country_code = request.args.get("country_code", type=str).upper()
 
-    # Validate country code length
+    # Validate country code length must be 2 letters
     if len(country_code) != 2:
         return (
             jsonify(
